@@ -1,15 +1,13 @@
-
-
 // Fetch data from multiple JSON files concurrently using Promise.all
 Promise.all([
     // Fetching 'cdn.json' and parsing it as JSON
-    smartFetch("assets/cdn.json", "data-cache-v1").then(data => new TextDecoder().decode(data)).then(text => JSON.parse(text)),
+    smartFetch("https://raw.githubusercontent.com/0xMe/ItemID2/main/assets/cdn.json", "data-cache-v1").then(data => new TextDecoder().decode(data)).then(text => JSON.parse(text)),
     // Fetching 'pngs.json' and parsing it as JSON
     smartFetch(
       `https://raw.githubusercontent.com/0xme/ff-resources/refs/heads/main/pngs/300x300/list.json`, 'data-cache-v1'
     ).then(data => new TextDecoder().decode(data)).then(text => JSON.parse(text)),
     // Fetching 'itemData.json' and parsing it as JSON
-    smartFetch("assets/itemData.json", 'data-cache-v1').then(data => new TextDecoder().decode(data)).then(text => JSON.parse(text)),
+    smartFetch("https://raw.githubusercontent.com/0xMe/ItemID2/main/assets/itemData.json", 'data-cache-v1').then(data => new TextDecoder().decode(data)).then(text => JSON.parse(text)),
   ])
   .then(([cdnData, pngsData, itemDatar]) => {
     // Assign the fetched data to global variables for further use
@@ -23,11 +21,6 @@ Promise.all([
     // Log any errors encountered during the fetch or processing
     console.error("Error fetching data:", error);
   });
-
-
-
-
-
 
 async function displayPage(pageNumber, searchTerm, webps) {
   current_data = webps;
@@ -99,10 +92,6 @@ async function displayPage(pageNumber, searchTerm, webps) {
   renderPagination(searchTerm, webps, (isTrashMode = false), totalPages); // Render pagination
   updateUrl(); // Update URL
 }
-
-
-
-
 
 // Wait for the DOM to be fully loaded before running the script
 document.addEventListener("DOMContentLoaded", () => {
