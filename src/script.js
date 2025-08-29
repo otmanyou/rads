@@ -1,10 +1,10 @@
 // Fetch data from multiple JSON files concurrently using Promise.all
 Promise.all([
     // Fetching 'cdn.json' and parsing it as JSON
-    smartFetch("https://raw.githubusercontent.com/0xMe/ItemID2/main/assets/cdn.jsonf", "data-cache-v1").then(data => new TextDecoder().decode(data)).then(text => JSON.parse(text)),
+    smartFetch("https://raw.githubusercontent.com/0xMe/ItemID2/main/assets/cdn.json", "data-cache-v1").then(data => new TextDecoder().decode(data)).then(text => JSON.parse(text)),
     // Fetching 'pngs.json' and parsing it as JSON
     smartFetch(
-      ``, 'data-cache-v1'
+      `https://raw.githubusercontent.com/0xme/ff-resources/refs/heads/main/pngs/300x300/list.json`, 'data-cache-v1'
     ).then(data => new TextDecoder().decode(data)).then(text => JSON.parse(text)),
     // Fetching 'itemData.json' and parsing it as JSON
     smartFetch("https://raw.githubusercontent.com/0xMe/ItemID2/main/assets/itemData.json", 'data-cache-v1').then(data => new TextDecoder().decode(data)).then(text => JSON.parse(text)),
